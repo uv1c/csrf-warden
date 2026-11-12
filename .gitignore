@@ -1,0 +1,35 @@
+# Composer
+/vendor/
+/composer.lock
+/auth.json
+
+# Local environment and secrets
+/.env
+/.env.*
+!/.env.example
+*.local
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Test and static-analysis caches
+/.phpunit.result.cache
+/.phpunit.cache/
+/.php-cs-fixer.cache
+/.phpstan.cache/
+/.psalm/
+/coverage/
+
+# Runtime storage
+/var/
+
+# Logs
+*.log
+
+# Editors and operating systems
+/.idea/
+/.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">csrf-warden shield</title>
+  <path d="M64 8 112 24v36c0 28-18 52-48 60-30-8-48-32-48-60V24L64 8Z" fill="#2563eb"/>
+  <path d="m44 64 14 14 27-30" fill="none" stroke="#f8fafc" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

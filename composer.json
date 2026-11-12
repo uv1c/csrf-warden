@@ -1,0 +1,39 @@
+{
+    "name": "uv1c/csrf-warden",
+    "description": "Clean, dependency-free CSRF protection for PHP 8.0+: scoped, masked, expiring tokens.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["csrf", "xsrf", "security", "token", "forms"],
+    "require": {
+        "php": ">=8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "CsrfWarden\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CsrfWarden\\Tests\\": "tests/Unit/"
+        }
+    },
+    "bin": [
+        "bin/csrf-warden"
+    ],
+    "scripts": {
+        "test": [
+            "@unit-test",
+            "@smoke-test"
+        ],
+        "unit-test": "phpunit",
+        "smoke-test": "@php tests/run.php",
+        "lint": "@php bin/csrf-warden lint"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable"
+}

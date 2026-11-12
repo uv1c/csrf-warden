@@ -1,0 +1,63 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+$root = dirname(__DIR__);
+$command = $argv[1] ?? 'help';
+
+if ($command === 'serve') {
+    $port = $argv[2] ?? '8000';
+    $commandLine = sprintf(
+        '%s -S 127.0.0.1:%s -t %s',
+        escapeshellarg(PHP_BINARY),
+        escapeshellarg($port),
+        escapeshellarg($root . '/example')
+    );
+    passthru($commandLine, $status);
+    exit($status);
+}
+
+if ($command === 'lint') {
+    $failures = 0;
+    $directories = [$root . '/src', $root . '/tests', $root . '/example'];
+
+    foreach ($directories as $directory) {
+        $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
+        foreach ($files as $file) {
+            if (!$file->isFile() || $file->getExtension() !== 'php') {
+                continue;
+            }
+
+            $output = [];
+            $status = 0;
+            exec(
+                sprintf('%s -l %s', escapeshellarg(PHP_BINARY), escapeshellarg($file->getPathname())),
+                $output,
+                $status
+            );
+            if ($status !== 0) {
+                $failures++;
+                echo implode(PHP_EOL, $output) . PHP_EOL;
+            }
+        }
+    }
+
+    if ($failures === 0) {
+        echo 'No syntax errors.' . PHP_EOL;
+    }
+
+    exit($failures === 0 ? 0 : 1);
+}
+
+echo <<<'TEXT'
+csrf-warden
+
+Usage:
+  csrf-warden serve [port]   Start the example app on 127.0.0.1 (default port 8000)
+  csrf-warden lint           Syntax-check src/, tests/, and example/
+  csrf-warden help           Show this help
+
+TEXT;
+
+exit($command === 'help' ? 0 : 1);

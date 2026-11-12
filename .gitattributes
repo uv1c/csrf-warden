@@ -1,0 +1,13 @@
+# Normalize line endings in the repository.
+* text=auto
+
+# The CLI is executed directly on Unix.
+/bin/csrf-warden text eol=lf
+
+# Keep development-only files out of Composer/Packagist archives.
+/.github export-ignore
+/.gitignore export-ignore
+/.gitattributes export-ignore
+/phpunit.xml export-ignore
+/tests export-ignore
+/example export-ignore
