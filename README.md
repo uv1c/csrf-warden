@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="assets/logo.svg" width="96" height="96" alt="csrf-warden shield">
-</p>
-
 <h1 align="center">csrf-warden</h1>
 
 <p align="center">
